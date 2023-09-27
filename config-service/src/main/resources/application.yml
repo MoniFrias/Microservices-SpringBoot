@@ -1,0 +1,12 @@
+server:
+  port: 8083 
+spring:
+  application:
+    name: config-service
+  cloud:
+    config:
+      server:
+        git:
+          default-label: part4-ConfigServer
+          uri: https://github.com/MoniFrias/Microservices-SpringBoot
+          search-paths: config-data
