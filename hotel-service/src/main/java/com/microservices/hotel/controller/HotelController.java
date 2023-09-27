@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.microservices.hotel.entity.Hotel;
+import com.microservices.hotel.model.Rating;
 import com.microservices.hotel.service.HotelService;
 
 @RestController
@@ -40,6 +41,15 @@ public class HotelController {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 		return new ResponseEntity<>(hotel, HttpStatus.OK);
+	}
+	
+	@GetMapping(path = "/getRatings/{hotelId}")
+	public ResponseEntity<List<Rating>> getRatings(@PathVariable final Long hotelId){
+		List<Rating> ratings = hotelService.getRatings(hotelId);
+		if(ratings.isEmpty()) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<>(ratings, HttpStatus.OK);
 	}
 	
 	@GetMapping(path = "/getAll")

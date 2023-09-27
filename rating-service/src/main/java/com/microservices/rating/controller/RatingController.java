@@ -42,6 +42,24 @@ public class RatingController {
 		return new ResponseEntity<>(rating, HttpStatus.OK);
 	}
 	
+	@GetMapping(path = "/getRatingByUserId/{userId}")
+	public ResponseEntity<List<Rating>> getRatingByUserId(@PathVariable final Long userId){
+		List<Rating> ratings = service.getRatingByUserId(userId);
+		if(ratings.isEmpty()) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<>(ratings, HttpStatus.OK);
+	}
+
+	@GetMapping(path = "/getRatingByIdHotel/{hotelId}")
+	public ResponseEntity<List<Rating>> getRatingByIdHotel(@PathVariable final Long hotelId){
+		List<Rating> ratings = service.getRatingByIdHotel(hotelId);
+		if(ratings.isEmpty()) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<>(ratings, HttpStatus.OK);
+	}
+	
 	@GetMapping(path = "/getAll")
 	public ResponseEntity<List<Rating>> getAll(){
 		List<Rating> ratings = service.getAll();

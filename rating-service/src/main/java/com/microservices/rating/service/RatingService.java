@@ -30,4 +30,12 @@ public class RatingService {
 	public List<Rating> getAll(){
 		return repository.findAll();
 	}
+	
+	public List<Rating> getRatingByUserId(Long userId) {
+		return repository.findByIdUser(userId);
+	}
+
+	public List<Rating> getRatingByIdHotel(Long hotelId) {
+		return repository.findByIdHotel(hotelId);
+	}
 }

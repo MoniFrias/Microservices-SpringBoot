@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.microservices.user.entity.User;
+import com.microservices.user.model.Rating;
 import com.microservices.user.service.UserService;
 
 @RestController
@@ -36,6 +37,15 @@ public class userController {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 		return new ResponseEntity<>(user, HttpStatus.OK);
+	}
+	
+	@GetMapping(path = "/getRatings/{userId}")
+	public ResponseEntity<List<Rating>> getRatings(@PathVariable final Long userId){
+		List<Rating> ratings = userService.getRatings(userId);
+		if(ratings.isEmpty()) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<>(ratings, HttpStatus.OK);
 	}
 	
 	@GetMapping(path = "/getAll")
