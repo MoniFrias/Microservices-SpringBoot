@@ -5,8 +5,10 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.reactive.function.client.WebClient;
 
 import com.microservices.user.entity.User;
 import com.microservices.user.model.Rating;
@@ -18,8 +20,14 @@ public class UserService {
 	@Autowired
 	private UserRepository userRepository;
 	
+	//@Autowired
+	//private RestTemplate restTemplate; Commented - using WebClient
+	
 	@Autowired
-	private RestTemplate restTemplate;
+	private WebClient webClient;
+
+	@Value("${ratingServiceFindByIdUser}")
+	private String ratingServiceFindByIdUser;
 	
 	public User saveUser(User user){
 		userRepository.save(user);
@@ -37,7 +45,8 @@ public class UserService {
 	public List<Rating> getRatings(Long userId){
 		Optional<User> user = userRepository.findById(userId);
 		if(user.isPresent()) {
-			List<Rating> ratings = restTemplate.getForObject("http://localhost:8082/rating/getRatingByUserId/" + userId, List.class);
+			List<Rating> ratings = webClient.get().uri(ratingServiceFindByIdUser+userId).retrieve().bodyToMono(List.class).block();
+			//List<Rating> ratings = restTemplate.getForObject("http://localhost:8082/rating/getRatingByUserId/" + userId, List.class);
 			return ratings;
 		}
 		return new ArrayList<>();
