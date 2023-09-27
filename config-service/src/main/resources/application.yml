@@ -8,5 +8,5 @@ spring:
       server:
         git:
           default-label: part4-ConfigServer
-          uri: https://github.com/MoniFrias/Microservices-SpringBoot
+          uri: https://github.com/MoniFrias/Microservices-SpringBoot.git
           search-paths: config-data
