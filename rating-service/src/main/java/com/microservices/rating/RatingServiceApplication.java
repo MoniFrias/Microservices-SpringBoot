@@ -2,10 +2,9 @@ package com.microservices.rating;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 @SpringBootApplication
-@EnableEurekaClient
+//@EnableEurekaClient is deprecated, no need to annotate. It is enough to add the pom
 public class RatingServiceApplication {
 
 	public static void main(String[] args) {
