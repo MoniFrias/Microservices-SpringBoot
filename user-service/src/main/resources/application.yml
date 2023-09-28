@@ -1,12 +1,12 @@
 # Fetching config from server at : http://localhost:8083
 spring:
   application:
-    name: hotel-service
+    name: user-service
   cloud:
     config:
       uri: http://localhost:8083
   config:
-    import: optional:configserver:http://localhost:8083
+    import: optional:configserver:http://localhost:8083  
 
 # Connection url for our DB
   datasource:
