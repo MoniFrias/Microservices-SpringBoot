@@ -1,5 +1,5 @@
 server:
-  port: 8081
+  port: ${PORT:${SERVER_PORT:0}}
 # URL Rating-service
 ratingServiceFindByIdHotel: http://localhost:8082/rating/getRatingByIdHotel/
 # Eureka - True because it will be registered in eureka
