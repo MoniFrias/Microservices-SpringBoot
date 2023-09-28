@@ -1,0 +1,8 @@
+# Define eureka port
+server:
+  port: 8761
+# Use 'false' because eureka cannot register itself (it's a server) the microservices are registered in it
+eureka:
+  client:
+    fecth-registry: false
+    registry-with-eureka: false

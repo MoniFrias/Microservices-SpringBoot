@@ -7,6 +7,6 @@ spring:
     config:
       server:
         git:
-          default-label: part4-ConfigServer
+          default-label: part5-Eureka
           uri: https://github.com/MoniFrias/Microservices-SpringBoot.git
           search-paths: config-data
