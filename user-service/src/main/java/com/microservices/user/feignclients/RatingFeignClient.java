@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import com.microservices.user.model.Rating;
 
 
-@FeignClient(name = "rating-service", url = "http://localhost:8082/rating")
+@FeignClient(name = "rating-service")
 public interface RatingFeignClient {
 
 	@GetMapping(path = "/getRatingByUserId/{userId}")
