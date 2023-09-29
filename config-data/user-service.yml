@@ -1,5 +1,5 @@
 server:
-  port: 8083
+  port: 8080
 #URL Rating-service
 ratingServiceFindByIdUser: http://localhost:8082/rating/getRatingByUserId/
 # Eureka - True because it will be registered in eureka
