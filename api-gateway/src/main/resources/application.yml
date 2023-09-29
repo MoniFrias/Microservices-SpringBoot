@@ -1,0 +1,9 @@
+# Fetching config from server at : http://localhost:8083
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    config:
+      uri: http://localhost:8083
+  config:
+    import: optional:configserver:http://localhost:8083

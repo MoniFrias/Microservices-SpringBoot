@@ -7,6 +7,6 @@ spring:
     config:
       server:
         git:
-          default-label: part6-Multiple-instances
+          default-label: part7-Gateway
           uri: https://github.com/MoniFrias/Microservices-SpringBoot.git
           search-paths: config-data
