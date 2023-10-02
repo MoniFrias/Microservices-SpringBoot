@@ -1,18 +1,16 @@
 server:
   port: 8084
-# URL Rating-service
-ratingServiceFindByIdHotel: http://localhost:8082/rating/getRatingByIdHotel/
 # Eureka - True because it will be registered in eureka
 eureka:
   client:
     fetch-registry: true
     register-with-eureka: true
     service-url:
-      defaultZone: http://localhost:8761/eureka
-  instance:
-    hostname: localhost
+      default-zone: http://localhost:8761/eureka
+    instance:
+      hostname: localhost
 
-#
+# API Gateway
 spring:
   cloud:
     gateway:
