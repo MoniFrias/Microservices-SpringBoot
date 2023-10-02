@@ -7,6 +7,6 @@ spring:
     config:
       server:
         git:
-          default-label: part8-CircuitBreaker
+          default-label: part9-Zipkin-Sleuth
           uri: https://github.com/MoniFrias/Microservices-SpringBoot.git
           search-paths: config-data
