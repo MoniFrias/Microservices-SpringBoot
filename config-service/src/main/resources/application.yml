@@ -7,6 +7,6 @@ spring:
     config:
       server:
         git:
-          default-label: part7-Gateway
+          default-label: part8-CircuitBreaker
           uri: https://github.com/MoniFrias/Microservices-SpringBoot.git
           search-paths: config-data
