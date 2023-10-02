@@ -17,6 +17,8 @@ import com.microservices.hotel.entity.Hotel;
 import com.microservices.hotel.model.Rating;
 import com.microservices.hotel.service.HotelService;
 
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+
 @RestController
 @RequestMapping(path = "/hotel")
 public class HotelController {
@@ -43,6 +45,7 @@ public class HotelController {
 		return new ResponseEntity<>(hotel, HttpStatus.OK);
 	}
 	
+	@CircuitBreaker(name = "ratingCB", fallbackMethod = "fallBackGetRatings")
 	@GetMapping(path = "/getRatings/{hotelId}")
 	public ResponseEntity<List<Rating>> getRatings(@PathVariable final Long hotelId){
 		List<Rating> ratings = hotelService.getRatings(hotelId);
@@ -57,4 +60,10 @@ public class HotelController {
 		List<Hotel> hotels = hotelService.getAll();
 		return hotels.isEmpty() ? new ResponseEntity<>(HttpStatus.NO_CONTENT) : new ResponseEntity<>(hotels, HttpStatus.OK);
 	}
+	
+	
+	private ResponseEntity<List<Rating>> fallBackGetRatings(@PathVariable final Long hotelId, RuntimeException ex){
+		return new ResponseEntity("Hotel : " + hotelId + " doesn't have ratings", HttpStatus.OK);
+	}
+	
 }
