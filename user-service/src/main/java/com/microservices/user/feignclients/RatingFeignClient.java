@@ -13,7 +13,7 @@ import com.microservices.user.model.Rating;
 @FeignClient(name = "rating-service")
 public interface RatingFeignClient {
 
-	@GetMapping(path = "/getRatingByUserId/{userId}")
+	@GetMapping(path = "/rating/getRatingByUserId/{userId}")
 	public ResponseEntity<List<Rating>> getRatingByUserId(@PathVariable final Long userId);
 
 }
