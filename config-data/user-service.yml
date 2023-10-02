@@ -14,7 +14,7 @@ eureka:
 # Circuit breaker with resilience4j
 resilience4j.circuitbreaker:
     instances:
-        ratingCB:
+        userCB:
             registerHealthIndicator: true
             slidingWindowSize: 10
             permittedNumberOfCallsInHalfOpenState: 3
