@@ -25,5 +25,5 @@ resilience4j.circuitbreaker:
             eventConsumerBufferSize: 10
 # Tracing Zipkin
 spring:
-  application:
-    zipkin: http://localhost:9411
+  zipkin:
+    baseUrl: https://localhost:9411/
