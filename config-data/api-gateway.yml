@@ -30,3 +30,11 @@ spring:
           uri: lb://user-service
           predicates:
             - Path=/user/**
+# Tracing Zipkin
+management:
+  zipkin:
+    tracing:
+      endpoint: https://localhost:9411/
+  tracing:
+    sampling:
+      probability: 1.0
